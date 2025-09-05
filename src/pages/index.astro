@@ -1,12 +1,74 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
-import Link from "../components/Link.astro";
-import { Image } from "astro:assets";
-import thumbsup from "../assets/images/thumbsup.png";
+import Book from "../components/Book.astro";
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+import Text from "../components/Text.astro";
+import Heading from "../components/Heading.astro";
 ---
-<MainLayout title="Titel">
-	<main class="container mx-auto p-4">
-		<p>Til <Link href="/komponentbibliotek">komponentbiblioteket</Link></p>
-		<Image src={thumbsup} alt=""></Image>
-	</main>
+
+<MainLayout title="SOFIE LYKKE">
+  <main class="container mx-auto">
+    <section class="mx-auto grid grid-cols-1 md:grid-cols-2">
+      <div class="col-span-1 md:col-span-2 leading-[1.1] m-0 z-30 overflow-hidden text-center space-y-2">
+        <!-- Øverste overskrift (fra venstre) -->
+        <div class="animate-from-left">
+          <Heading htmlheading="h1" size="ekstralarge" styling="blue" transform="uppercase"> Sofie Lykke</Heading>
+        </div>
+
+        <!-- Nederste overskrift (fra højre) -->
+        <div class="animate-from-right">
+          <Heading htmlheading="h1" size="large" styling="blue" transform="uppercase">Søndergaard</Heading>
+        </div>
+      </div>
+      <div class="col-span-1 col-start-1 md:col-span-1 md:col-start-2 md:row-start-2">
+        <div class="relative">
+          <img class="relative pl-7 pr-7 md:pl-0 md:pr-0" src="/public/komponent2.png" />
+          <div class="top-128 left-45 absolute md:top-161 md:left-50 text-right intersect:animate-fade-left intersect:duration-[5000ms]">
+            <Heading htmlheading="h3" size="medium" styling="grey" transform="uppercase">Multiemedie <br />design</Heading>
+          </div>
+        </div>
+      </div>
+      <div class="ml-10 md:col-span-1 md:col-start-1 md:row-start-2 relative md:mt-10">
+        <div class="relative">
+          <div class="intersect:animate-fade-right intersect:duration-[5000ms]">
+            <Heading htmlheading="h3" size="medium" styling="grey" transform="uppercase">Enkelhed<br /> med <br />kant</Heading>
+          </div>
+          <div class="text-right top-18 left-30 absolute intersect:animate-fade-left intersect:duration-[5000ms] md:top-21 md:left-35">
+            <Heading htmlheading="h4" size="small" font="inter" weight="light" transform="uppercase">Enkelhed<br /> med kant</Heading>
+          </div>
+        </div>
+        <div class="mt-15 md:mt-50 intersect:animate-fade-right intersect:animate-duration-[5000ms]">
+          <Heading htmlheading="h5" size="xsmall" font="inter" weight="light" transform="uppercase">Hvem er jeg?</Heading>
+          <div class="pr-30 md:pr-30">
+            <Text teksttype="brødtekst">
+              Jeg er studerende på Erhvervsakademiet København, hvor jeg læser til multimediedesigner, og jeg har en passion for at skabe design der forener minimalisme med kant. <br /><br /> Jeg tror på at de mest iøjnefaldende visuelle udtryk opstår,
+              når enkelhed kombineres med personlighed, og når det funktionelle samtidig er æstetisk og tør skille sig ud. <br />
+              <br />Jeg arbejder derfor med en tilgang, hvor hvert element har en funktion, og hvor helheden fremstår både enkelt og markant.
+            </Text>
+          </div>
+        </div>
+      </div>
+      <div class="mt-10 md:mt-0 leading-[1]" id="kompetencer">
+        <div class="text-center col-span-1 md:row-start-3 md:col-span-2">
+          <Heading htmlheading="h2" size="large" styling="blue" transform="uppercase">Kompetencer</Heading>
+        </div>
+      </div>
+      <div class="flex gap-1 p-8 mt-10 md:h-screen md:gap-3 md:col-span-2 items-end md:row-start-4 md:mt-30">
+        <div class="mr-3 md:mr-6">
+          <Book title="UX/UI Konventioner" level={90} rotate={5} class="mr-5" />
+        </div>
+        <Book title="FIGMA" level={80} font="inter" />
+        <Book title="ADOBE PHOTOSHOP" level={20} />
+        <Book title="ADOBE ILLUSTRATOR" level={50} font="inter" />
+        <Book title="ADOBE PREMIERE PRO" level={50} />
+        <Book title="ADOBE AFTER EFFECTS" level={30} font="inter" />
+        <Book title="HTML | CSS | JS" level={85} />
+        <Book title="BRUGERTESTS" level={85} />
+        <div class="ml-3 md:ml-6">
+          <Book title="ASTRO" level={70} rotate={-5} font="inter" />
+        </div>
+      </div>
+    </section>
+  </main>
 </MainLayout>

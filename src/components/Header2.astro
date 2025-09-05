@@ -1,0 +1,30 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+---
+
+<header x-data="{ showmenu: false }" class="bg-secondary-400">
+  <div id="navbar" class="intersect:animate-fade-down intersect:animate-duration-[1000ms] container mx-auto p-4 flex flex-row justify-between items-center">
+    <div id="logo" class="">
+      <a href="#" class="text-2xl font-anton text-grey-100">EK- MULTIMEDIEDESIGN</a>
+    </div>
+    <nav id="desktopmenu" class="hidden lg:block z-50">
+      <ul class="flex flex-row gap-4">
+        <li class=""><a href="/" class={currentPath === "i/" ? "" : "font-inter-tight uppercase font-light"}>Forside</a></li>
+
+        <li class=""><a href="/komponentbibliotek/" class={currentPath === "komponentbibliotek/" ? "font-inter-tight uppercase font-light" : "font-light font-inter-tight uppercase"}>Komponentbibliotek</a></li>
+      </ul>
+    </nav>
+    <button id="burgermenu" class="lg:hidden z-50" x-on:click="showmenu = ! showmenu"
+      ><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+      </svg>
+    </button>
+  </div>
+  <nav id="mobilmenu" class="flex flex-col content-center" x-show="showmenu" x-transition x-on:click="showmenu = false" x-on:click.outside="showmenu = false">
+    <ul class="border-t-1 border-b-1 border-blue-100 z-60 mb-10">
+      <li class="text-center py-2"><a href="/" class={currentPath === "" ? "font-light font-inter-tight uppercase" : "font-light font-inter-tight uppercase z-50"}>Forside</a></li>
+      <li class="text-center py-2"><a href="/komponentbibliotek/" class={currentPath === "komponentbibliotek/" ? "font-light font-inter-tight uppercase z-50" : "font-light font-inter-tight uppercase z-50"}>Komponentbibliotek</a></li>
+    </ul>
+  </nav>
+</header>
