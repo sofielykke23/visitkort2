@@ -7,12 +7,12 @@ const { title, level = 50, rotate = 0, font = "anton" } = Astro.props;
 const fontVar = font === "inter" ? "var(--font-inter-tight)" : "var(--font-anton)";
 ---
 
-<div class="relative w-15 h-80 md:w-30 md:h-170 border bg-blue-100/20 border-blue-100 flex items-center justify-center cursor-pointer overflow-hidden group" style={`--level: ${level}%; transform: rotate(${rotate}deg);`}>
+<div class="relative w-10 h-80 md:w-30 md:h-170 border bg-blue-100/20 border-blue-100 flex items-center justify-center cursor-pointer overflow-hidden group" style={`--level: ${level}%; transform: rotate(${rotate}deg);`}>
   <!-- Fyld / progress -->
   <div class="absolute bottom-0 left-0 w-full bg-blue-100 h-0 transition-all duration-500 ease-in-out group-hover:h-[var(--level)]"></div>
 
   <!-- Tekst lodret -->
-  <span class={`rotate-90 text-2xl md:text-5xl whitespace-nowrap text-black group-hover:text-white transition-colors duration-500 ${font === "inter" ? "font-light" : "font-normal"}`} style={`font-family: ${fontVar};`}>
+  <span class={`rotate-90 text-xl md:text-5xl whitespace-nowrap text-black group-hover:text-white transition-colors duration-500 ${font === "inter" ? "font-light" : "font-normal"}`} style={`font-family: ${fontVar};`}>
     {title}
   </span>
 </div>
